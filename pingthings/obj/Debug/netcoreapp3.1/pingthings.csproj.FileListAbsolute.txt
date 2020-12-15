@@ -1,0 +1,12 @@
+C:\SPaCE\testAutomation\pingthings\pingthings\bin\Debug\netcoreapp3.1\pingthings.exe
+C:\SPaCE\testAutomation\pingthings\pingthings\bin\Debug\netcoreapp3.1\pingthings.deps.json
+C:\SPaCE\testAutomation\pingthings\pingthings\bin\Debug\netcoreapp3.1\pingthings.runtimeconfig.json
+C:\SPaCE\testAutomation\pingthings\pingthings\bin\Debug\netcoreapp3.1\pingthings.runtimeconfig.dev.json
+C:\SPaCE\testAutomation\pingthings\pingthings\bin\Debug\netcoreapp3.1\pingthings.dll
+C:\SPaCE\testAutomation\pingthings\pingthings\bin\Debug\netcoreapp3.1\pingthings.pdb
+C:\SPaCE\testAutomation\pingthings\pingthings\obj\Debug\netcoreapp3.1\pingthings.AssemblyInfoInputs.cache
+C:\SPaCE\testAutomation\pingthings\pingthings\obj\Debug\netcoreapp3.1\pingthings.AssemblyInfo.cs
+C:\SPaCE\testAutomation\pingthings\pingthings\obj\Debug\netcoreapp3.1\pingthings.csproj.CoreCompileInputs.cache
+C:\SPaCE\testAutomation\pingthings\pingthings\obj\Debug\netcoreapp3.1\pingthings.dll
+C:\SPaCE\testAutomation\pingthings\pingthings\obj\Debug\netcoreapp3.1\pingthings.pdb
+C:\SPaCE\testAutomation\pingthings\pingthings\obj\Debug\netcoreapp3.1\pingthings.genruntimeconfig.cache
