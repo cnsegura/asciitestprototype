@@ -1,0 +1,1 @@
+[![Build Status](https://segura.visualstudio.com/ascii5G/_apis/build/status/cnsegura.asciitestprototype?branchName=main)](https://segura.visualstudio.com/ascii5G/_build/latest?definitionId=1&branchName=main)
