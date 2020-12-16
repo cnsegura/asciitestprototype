@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj": {}
+    "c:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj": {}
   },
   "projects": {
-    "C:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj": {
+    "c:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj",
+        "projectUniqueName": "c:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj",
         "projectName": "pingthings",
-        "projectPath": "C:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj",
+        "projectPath": "c:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj",
         "packagesPath": "C:\\Users\\chrisseg\\.nuget\\packages\\",
-        "outputPath": "C:\\SPaCE\\testAutomation\\pingthings\\pingthings\\obj\\",
+        "outputPath": "c:\\SPaCE\\testAutomation\\pingthings\\pingthings\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chrisseg\\AppData\\Roaming\\NuGet\\NuGet.Config",

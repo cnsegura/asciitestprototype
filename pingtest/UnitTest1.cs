@@ -9,7 +9,7 @@ namespace wopr
         [TestMethod]
         public void Ping_Known_Good_Address()
         {
-            string host = "1.1.1.1";
+            string host = "8.8.8.8";
             bool expectedResult = true;
             bool returnedResult;
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PCdOxyDYy9GbDLdHiFHcnPybol+jCV0m0ohsj785RFDaQUd+GIb7PWKVSlUOk62d6VDBFhkU1iAmhvWsFpVU2A==",
+  "dgSpecHash": "9fJt8s4FgBqBXNVEge8RRcY2GT2BiS8xXivj/+0U7F2TbzVXg7wmr13mFi+MAMg+RUog0JFYK7dNJc7FoVHhGw==",
   "success": true,
-  "projectFilePath": "C:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj",
+  "projectFilePath": "c:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

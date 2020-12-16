@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0DYFih/UeVyr0BztAzNegH8tn6lDsxPcqdYm/vgaUpTp7xb77fHDFIQ0np/a/OaGuQR9a4rS9Nt3lGTqiqOG8Q==",
+  "dgSpecHash": "NYj74HNIICYT7YN5oX8Iw6PtgTwka6+K5ST4M45cpqCWDkUm/zLki/I6V7+umW5MUR97Sz4F2lCcrhSCvQfbow==",
   "success": true,
-  "projectFilePath": "C:\\SPaCE\\testAutomation\\pingthings\\pingtest\\pingtest.csproj",
+  "projectFilePath": "c:\\SPaCE\\testAutomation\\pingthings\\pingtest\\pingtest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chrisseg\\.nuget\\packages\\coverlet.collector\\1.3.0\\coverlet.collector.1.3.0.nupkg.sha512",
     "C:\\Users\\chrisseg\\.nuget\\packages\\microsoft.codecoverage\\16.7.1\\microsoft.codecoverage.16.7.1.nupkg.sha512",
