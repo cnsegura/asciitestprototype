@@ -9,12 +9,13 @@ namespace wopr
         [TestMethod]
         public void Ping_Known_Good_Address()
         {
-            string host = "8.8.8.8";
+            string host = "dns.google.com";
+            int port = 53;
             bool expectedResult = true;
             bool returnedResult;
 
             SpectrumFiveG sp = new SpectrumFiveG();
-            returnedResult = sp.PingServer(host);
+            returnedResult = sp.PingServer(host, port);
 
             Assert.IsTrue(returnedResult == expectedResult, "ping succeeded");
 
@@ -23,12 +24,13 @@ namespace wopr
         [TestMethod]
         public void Ping_Bad_Address()
         {
-            string host = "0.0.0.0";
+            string host = "dns.google.com";
+            int port = 80;
             bool expectedResult = true;
             bool returnedResult;
 
             SpectrumFiveG sp = new SpectrumFiveG();
-            returnedResult = sp.PingServer(host);
+            returnedResult = sp.PingServer(host, port);
 
             //should throw exception... 
             Assert.IsTrue(returnedResult == expectedResult, "ping succeeded");
