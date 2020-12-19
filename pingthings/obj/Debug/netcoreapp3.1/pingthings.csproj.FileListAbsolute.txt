@@ -10,4 +10,3 @@ C:\SPaCE\testAutomation\pingthings\pingthings\obj\Debug\netcoreapp3.1\pingthings
 C:\SPaCE\testAutomation\pingthings\pingthings\obj\Debug\netcoreapp3.1\pingthings.dll
 C:\SPaCE\testAutomation\pingthings\pingthings\obj\Debug\netcoreapp3.1\pingthings.pdb
 C:\SPaCE\testAutomation\pingthings\pingthings\obj\Debug\netcoreapp3.1\pingthings.genruntimeconfig.cache
-c:\SPaCE\testAutomation\pingthings\pingthings\obj\Debug\netcoreapp3.1\pingthings.csprojAssemblyReference.cache

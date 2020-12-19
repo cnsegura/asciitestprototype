@@ -14,7 +14,7 @@ namespace wopr
             bool expectedResult = true;
             bool returnedResult;
 
-            SpectrumFiveG sp = new SpectrumFiveG();
+            PingSpectrumFiveG sp = new PingSpectrumFiveG();
             returnedResult = sp.PingServer(host, port);
 
             Assert.IsTrue(returnedResult == expectedResult, "ping succeeded");
@@ -29,7 +29,7 @@ namespace wopr
             bool expectedResult = true;
             bool returnedResult;
 
-            SpectrumFiveG sp = new SpectrumFiveG();
+            PingSpectrumFiveG sp = new PingSpectrumFiveG();
             returnedResult = sp.PingServer(host, port);
 
             //should throw exception... 
