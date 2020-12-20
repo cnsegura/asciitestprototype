@@ -9,7 +9,7 @@ namespace wopr
     public class connectioncheck
     {
         
-        TestContext TestContext { get; set; }
+        public TestContext TestContext { get; set; }
         /*
         [TestInitialize]
         public void Test_Assesembly_Initialize(TestContext context)
@@ -85,12 +85,12 @@ namespace wopr
             Assert.IsTrue(returnedResult == expectedResult, "ping wrong address");
         }
 
-        [TestCleanup]
-        public void Test_Assembly_Cleanup(TestContext context)
-        {
-            //Console.SetOut(oldOut);
-            //writer.Close();
-            //ostrm.Close();
-        }
+        //[TestCleanup]
+        //public void Test_Assembly_Cleanup(TestContext context)
+        //{
+        //    //Console.SetOut(oldOut);
+        //    //writer.Close();
+        //    //ostrm.Close();
+        //}
     }
 }
