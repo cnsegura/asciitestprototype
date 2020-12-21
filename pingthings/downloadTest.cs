@@ -51,80 +51,87 @@ namespace asciitestingNS
                 numofParallelDownloads = Environment.ProcessorCount;
             }
 
+
             WebRequest webRequest = HttpWebRequest.Create(fileUrl);
             webRequest.Method = "HEAD";
             long responseLength;
-            using (WebResponse webResponse = webRequest.GetResponse())
+            try
             {
-                responseLength = long.Parse(webResponse.Headers.Get("Content-Length"));
-                result.Size = responseLength;
-            }
-
-            using (FileStream destinationStream = new FileStream(destinationFilePath, FileMode.Append))
-            {
-                ConcurrentDictionary<int, string> tempFilesDictionary = new ConcurrentDictionary<int, string>();
-
-                List<Range> readRanges = new List<Range>();
-                for (int chunk = 0; chunk <numofParallelDownloads -1; chunk++)
+                using (WebResponse webResponse = webRequest.GetResponse())
                 {
-                    var range = new Range()
+                    responseLength = long.Parse(webResponse.Headers.Get("Content-Length"));
+                    result.Size = responseLength;
+                }
+                using (FileStream destinationStream = new FileStream(destinationFilePath, FileMode.Append))
+                {
+                    ConcurrentDictionary<int, string> tempFilesDictionary = new ConcurrentDictionary<int, string>();
+
+                    List<Range> readRanges = new List<Range>();
+                    for (int chunk = 0; chunk < numofParallelDownloads - 1; chunk++)
                     {
-                        Start = chunk * (responseLength / numofParallelDownloads),
-                        End = ((chunk + 1) * (responseLength / numofParallelDownloads)) - 1
-                    };
-                    readRanges.Add(range);
-                }
+                        var range = new Range()
+                        {
+                            Start = chunk * (responseLength / numofParallelDownloads),
+                            End = ((chunk + 1) * (responseLength / numofParallelDownloads)) - 1
+                        };
+                        readRanges.Add(range);
+                    }
 
-                readRanges.Add(new Range()
-                {
-                    Start = readRanges.Any() ? readRanges.Last().End +1 : 0,
-                    End = responseLength -1
-                });
+                    readRanges.Add(new Range()
+                    {
+                        Start = readRanges.Any() ? readRanges.Last().End + 1 : 0,
+                        End = responseLength - 1
+                    });
 
 
-                //create and start stopwatch
-                var watch = new Stopwatch();
-                watch.Start();
+                    //create and start stopwatch
+                    var watch = new Stopwatch();
+                    watch.Start();
 
-                int index = 0;
-                Parallel.ForEach(readRanges, new ParallelOptions() { MaxDegreeOfParallelism = numofParallelDownloads }, readRanges =>
-                 {
-                     HttpWebRequest httpWebRequest = HttpWebRequest.Create(fileUrl) as HttpWebRequest;
-                     httpWebRequest.Method = "GET";
-                     httpWebRequest.AddRange(readRanges.Start, readRanges.End);
-                     using (HttpWebResponse httpWebResponse = httpWebRequest.GetResponse() as HttpWebResponse)
+                    int index = 0;
+                    Parallel.ForEach(readRanges, new ParallelOptions() { MaxDegreeOfParallelism = numofParallelDownloads }, readRanges =>
                      {
-                         string tempFilePath = Path.GetTempFileName();
-                         using (var fileStream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write, FileShare.Write))
+                         HttpWebRequest httpWebRequest = HttpWebRequest.Create(fileUrl) as HttpWebRequest;
+                         httpWebRequest.Method = "GET";
+                         httpWebRequest.AddRange(readRanges.Start, readRanges.End);
+                         using (HttpWebResponse httpWebResponse = httpWebRequest.GetResponse() as HttpWebResponse)
                          {
-                             httpWebResponse.GetResponseStream().CopyTo(fileStream);
-                             tempFilesDictionary.TryAdd((int)index, tempFilePath);
+                             string tempFilePath = Path.GetTempFileName();
+                             using (var fileStream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write, FileShare.Write))
+                             {
+                                 httpWebResponse.GetResponseStream().CopyTo(fileStream);
+                                 tempFilesDictionary.TryAdd((int)index, tempFilePath);
+                             }
                          }
-                     }
-                     index++;
-                 });
+                         index++;
+                     });
 
-                result.ParallelDownloads = index;
+                    result.ParallelDownloads = index;
 
-                watch.Stop();
-                
-                result.TimeTaken = watch.Elapsed;
+                    watch.Stop();
 
-                //in Mbps
-                result.DownloadSpeed = (result.Size * 8 / 1000000) / result.TimeTaken.TotalSeconds;
+                    result.TimeTaken = watch.Elapsed;
 
-                #region Merge to single file
-                foreach (var tempFile in tempFilesDictionary.OrderBy(b => b.Key))
-                {
-                    byte[] tempFileBytes = File.ReadAllBytes(tempFile.Value);
-                    destinationStream.Write(tempFileBytes, 0, tempFileBytes.Length);
-                    File.Delete(tempFile.Value);
+                    //in Mbps
+                    result.DownloadSpeed = (result.Size * 8 / 1000000) / result.TimeTaken.TotalSeconds;
+
+                    #region Merge to single file
+                    foreach (var tempFile in tempFilesDictionary.OrderBy(b => b.Key))
+                    {
+                        byte[] tempFileBytes = File.ReadAllBytes(tempFile.Value);
+                        destinationStream.Write(tempFileBytes, 0, tempFileBytes.Length);
+                        File.Delete(tempFile.Value);
+                    }
+                    # endregion
+
+                    return result;
                 }
-                # endregion
-
-                return result;
             }
-
+            catch (Exception ex)
+            {
+                Console.WriteLine("Server not found");
+                return null;
+            }
         }
     }
 }
