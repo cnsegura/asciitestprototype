@@ -129,7 +129,7 @@ namespace asciitestingNS
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Server not found");
+                Console.WriteLine("Download test failed {0}", ex);
                 return null;
             }
         }

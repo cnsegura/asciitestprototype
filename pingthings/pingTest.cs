@@ -20,6 +20,7 @@ namespace asciitestingNS
             }
             catch (SocketException ex)
             {
+                Console.WriteLine("Connection check failed {0}", ex);
                 return false;
             }
 

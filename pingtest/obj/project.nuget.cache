@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hgMFLJAWX3YwyJvtkORYj0hPOc2YZ6cSMaJniD1jKCgVMPHzpcc2iuikRJ2zc4y8EkBUTYhcrD2n9AgEYzL4YA==",
+  "dgSpecHash": "DZf9eA7GUcGSIGTo6rIugjd0rHuXo5MY8+HXnKaTT32vU4g44NTSPv0XCwugRXZh4Jl6Bxf3L4TU65FpAJvw+g==",
   "success": true,
   "projectFilePath": "c:\\SPaCE\\testAutomation\\pingthings\\pingtest\\pingtest.csproj",
   "expectedPackageFiles": [
@@ -18,6 +18,7 @@
     "C:\\Users\\chrisseg\\.nuget\\packages\\mstest.testframework\\2.1.1\\mstest.testframework.2.1.1.nupkg.sha512",
     "C:\\Users\\chrisseg\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\chrisseg\\.nuget\\packages\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
+    "C:\\Users\\chrisseg\\.nuget\\packages\\nlog\\4.7.6\\nlog.4.7.6.nupkg.sha512",
     "C:\\Users\\chrisseg\\.nuget\\packages\\nuget.frameworks\\5.0.0\\nuget.frameworks.5.0.0.nupkg.sha512",
     "C:\\Users\\chrisseg\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\chrisseg\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

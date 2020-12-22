@@ -2,35 +2,16 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
 using asciitestingNS;
+using wopr.common;
 
 namespace wopr
 {
     [TestClass]
-    public class connectioncheck
+    public class SystemCheckTests : TestCommon
     {
         
-        public TestContext TestContext { get; set; }
-        /*
-        [TestInitialize]
-        public void Test_Assesembly_Initialize(TestContext context)
-        {
-            FileStream ostrm;
-            StreamWriter writer;
-            TextWriter oldOut = Console.Out;
-            string _fileName = "./TestResult_" + DateTime.Now.ToString("yyyyMMddTHHmm") + ".txt";
-            try
-            {
-                ostrm = new FileStream(_fileName, FileMode.OpenOrCreate, FileAccess.Write);
-                writer = new StreamWriter(ostrm);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Cannot open file for writing");
-                Console.WriteLine(e.Message);
-                return;
-            }
-        }
-        */
+        //public TestContext TestContext { get; set; }
+
         [TestMethod]
         public void Ping_Known_Good_Address()
         {
@@ -84,13 +65,5 @@ namespace wopr
             //should throw exception... 
             Assert.IsTrue(returnedResult == expectedResult, "ping wrong address");
         }
-
-        //[TestCleanup]
-        //public void Test_Assembly_Cleanup(TestContext context)
-        //{
-        //    //Console.SetOut(oldOut);
-        //    //writer.Close();
-        //    //ostrm.Close();
-        //}
     }
 }
