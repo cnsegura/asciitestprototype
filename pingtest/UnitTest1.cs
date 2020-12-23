@@ -20,8 +20,12 @@ namespace wopr
 
             PingSpectrumFiveG sp = new PingSpectrumFiveG();
             returnedResult = sp.PingServer(host, port);
-            this.LogTest.Info("I'm here");
             Assert.IsTrue(returnedResult == expectedResult, "ping failed");
+            if( returnedResult == true)
+            {
+                this.LogTest.Info("Successfully ping'd host: {0}", host);
+                this.LogTest.Info("At port: {0}", port);
+            }
 
         }
 
