@@ -67,6 +67,13 @@ namespace wopr.common
         {
             this.LogTestStarting(TestContext.TestName);
         }
+
+        [TestCleanup]
+        public void AfterTest()
+        {
+            this.LogTest.LogTestEnding(TestContext.TestName);
+            this.TestContext.AddResultFile("./file.txt");
+        }
         #endregion
     }
 
