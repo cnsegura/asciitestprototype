@@ -1,14 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NLog;
 using System;
 using System.IO;
-using asciitestingNS;
-using NLog;
 
 namespace wopr.common
 {
     public class TestCommon
-    {   
-        
+    {
+
         private readonly Logger log = LogManager.GetCurrentClassLogger();
         public TestContext TestContext { get; set; }
         //public string TestTitle { get; set; }
@@ -33,13 +32,13 @@ namespace wopr.common
         {
             this.startTestTime = DateTime.Now;
             this.Info("*************************************************************************************");
-            this.Info("START: {0} starts at {1}.", testTitle, this.startTestTime);
+            this.Info("TEST: {0} starts at {1}.", testTitle, this.startTestTime);
         }
-        public void LogTestEnding(string testTitle)
+        public void LogTestEnding(string testTitle, DateTime startTest)
         {
             var endTestTime = DateTime.Now;
-            var timeInSec = (endTestTime - this.startTestTime).TotalMilliseconds / 1000d;
-            this.Info("END: {0} ends at {1} after {2} sec.", testTitle, endTestTime, timeInSec.ToString("##,###"));
+            var timeInSec = (endTestTime - startTest).TotalMilliseconds / 1000d;
+            this.Info("TEST: {0} ends at {1} after {2} sec.", testTitle, endTestTime, timeInSec.ToString("#0.###"));
             this.Info("*************************************************************************************");
         }
         public void Info(string message, params object[] args)
@@ -64,13 +63,17 @@ namespace wopr.common
         [TestInitialize]
         public void BeforeTest()
         {
+            if (File.Exists(@"./logfile.txt"))
+            {
+                File.Delete(@"./logfile.txt");
+            }
             this.LogTestStarting(TestContext.TestName);
         }
 
         [TestCleanup]
         public void AfterTest()
         {
-            this.LogTest.LogTestEnding(TestContext.TestName);
+            this.LogTest.LogTestEnding(TestContext.TestName, startTestTime);
             this.TestContext.AddResultFile("./logfile.txt");
             NLog.LogManager.Shutdown();
         }
