@@ -20,50 +20,26 @@ namespace wopr
             bool expectedResult = true;
             bool returnedResult;
 
-            //test file attachment
-            FileStream ostrm;
-            StreamWriter writer;
-            TextWriter oldOut = Console.Out;
-            string _fileName = "./TestResult_" + DateTime.Now.ToString("yyyyMMddTHHmm") + ".txt";
-            try
-            {
-                ostrm = new FileStream(_fileName, FileMode.OpenOrCreate, FileAccess.Write);
-                writer = new StreamWriter(ostrm);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Cannot open file for writing");
-                Console.WriteLine(e.Message);
-                return;
-            }
-            Console.SetOut(writer);
-            Console.WriteLine("Test result for : {0}", TestContext.TestName + DateTime.Now.ToString("yyyyMMdd"));
-            Console.WriteLine("Everything is awesome");
-            Console.SetOut(oldOut);
-            writer.Close();
-            ostrm.Close();
-            TestContext.AddResultFile(_fileName);
-
             PingSpectrumFiveG sp = new PingSpectrumFiveG();
             returnedResult = sp.PingServer(host, port);
-
+            this.LogTest.Info("I'm here");
             Assert.IsTrue(returnedResult == expectedResult, "ping failed");
 
         }
 
-        [TestMethod]
-        public void Ping_Bad_Address()
-        {
-            string host = "dns.google.com";
-            int port = 80;
-            bool expectedResult = true;
-            bool returnedResult;
+        //[TestMethod]
+        //public void Ping_Bad_Address()
+        //{
+        //    string host = "dns.google.com";
+        //    int port = 80;
+        //    bool expectedResult = true;
+        //    bool returnedResult;
 
-            PingSpectrumFiveG sp = new PingSpectrumFiveG();
-            returnedResult = sp.PingServer(host, port);
+        //    PingSpectrumFiveG sp = new PingSpectrumFiveG();
+        //    returnedResult = sp.PingServer(host, port);
 
-            //should throw exception... 
-            Assert.IsTrue(returnedResult == expectedResult, "ping wrong address");
-        }
+        //    //should throw exception... 
+        //    Assert.IsTrue(returnedResult == expectedResult, "ping wrong address");
+        //}
     }
 }

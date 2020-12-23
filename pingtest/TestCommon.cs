@@ -65,7 +65,6 @@ namespace wopr.common
         [TestInitialize]
         public void BeforeTest()
         {
-            //this.TestTitle = TestContext.TestName;
             this.LogTestStarting(TestContext.TestName);
         }
         #endregion
