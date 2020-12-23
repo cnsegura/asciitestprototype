@@ -10,8 +10,6 @@ namespace wopr
     public class SystemCheckTests : TestCommon
     {
         
-        //public TestContext TestContext { get; set; }
-
         [TestMethod]
         public void Ping_Known_Good_Address()
         {

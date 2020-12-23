@@ -6,10 +6,9 @@ using NLog;
 
 namespace wopr.common
 {
-    
     public class TestCommon
-    {
-
+    {   
+        
         private readonly Logger log = LogManager.GetCurrentClassLogger();
         public TestContext TestContext { get; set; }
         //public string TestTitle { get; set; }
@@ -72,7 +71,8 @@ namespace wopr.common
         public void AfterTest()
         {
             this.LogTest.LogTestEnding(TestContext.TestName);
-            this.TestContext.AddResultFile("./file.txt");
+            this.TestContext.AddResultFile("./logfile.txt");
+            NLog.LogManager.Shutdown();
         }
         #endregion
     }
