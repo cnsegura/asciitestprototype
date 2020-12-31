@@ -64,7 +64,7 @@ namespace wopr.common
         public void BeforeTest()
         {
             //remove any previous logfiles
-            File.Delete(@"./logfile.txt");
+            //File.Delete(@"./logfile.txt");
             this.LogTestStarting(TestContext.TestName);
         }
 
@@ -73,7 +73,7 @@ namespace wopr.common
         {
             this.LogTest.LogTestEnding(TestContext.TestName, startTestTime);
             this.TestContext.AddResultFile("./logfile.txt");
-            NLog.LogManager.Shutdown();
+            //NLog.LogManager.Shutdown();
         }
         #endregion
     }
