@@ -17,15 +17,32 @@ steps:
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
+  displayName: 'Restore'
   inputs:
     restoreSolution: '$(solution)'
 
 - task: VSBuild@1
+  displayName: 'Build $(buildConfiguration)'
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
+  displayName: Test
   inputs:
     command: 'test'
+
+- task: DotNetCoreCLI@2
+  displayName: ' DotNet Publish $(buildConfiguration)'
+  inputs:
+    command: publish
+    publishWebProjects: false
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: True
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish $(buildConfiguration) Artifact to ADO Artifacts'
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'ag5g console release'
