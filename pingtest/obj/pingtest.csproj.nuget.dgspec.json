@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\SPaCE\\testAutomation\\pingthings\\pingtest\\pingtest.csproj": {}
+    "C:\\SPaCE\\testAutomation\\pingthings\\pingtest\\pingtest.csproj": {}
   },
   "projects": {
-    "c:\\SPaCE\\testAutomation\\pingthings\\pingtest\\pingtest.csproj": {
+    "C:\\SPaCE\\testAutomation\\pingthings\\pingtest\\pingtest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\SPaCE\\testAutomation\\pingthings\\pingtest\\pingtest.csproj",
+        "projectUniqueName": "C:\\SPaCE\\testAutomation\\pingthings\\pingtest\\pingtest.csproj",
         "projectName": "pingtest",
-        "projectPath": "c:\\SPaCE\\testAutomation\\pingthings\\pingtest\\pingtest.csproj",
+        "projectPath": "C:\\SPaCE\\testAutomation\\pingthings\\pingtest\\pingtest.csproj",
         "packagesPath": "C:\\Users\\chrisseg\\.nuget\\packages\\",
-        "outputPath": "c:\\SPaCE\\testAutomation\\pingthings\\pingtest\\obj\\",
+        "outputPath": "C:\\SPaCE\\testAutomation\\pingthings\\pingtest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chrisseg\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "c:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj": {
-                "projectPath": "c:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj"
+              "C:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj": {
+                "projectPath": "C:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj"
               }
             }
           }
@@ -84,14 +84,14 @@
         }
       }
     },
-    "c:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj": {
+    "C:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj",
+        "projectUniqueName": "C:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj",
         "projectName": "ag5g",
-        "projectPath": "c:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj",
+        "projectPath": "C:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj",
         "packagesPath": "C:\\Users\\chrisseg\\.nuget\\packages\\",
-        "outputPath": "c:\\SPaCE\\testAutomation\\pingthings\\pingthings\\obj\\",
+        "outputPath": "C:\\SPaCE\\testAutomation\\pingthings\\pingthings\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chrisseg\\AppData\\Roaming\\NuGet\\NuGet.Config",

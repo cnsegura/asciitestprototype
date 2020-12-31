@@ -22,7 +22,7 @@ namespace asciitestingNS
     {
         public long Size { get; set; }
         public string FilePath { get; set; }
-        public TimeSpan TimeTaken { get; set; }
+        public double TimeTaken { get; set; }
         public int ParallelDownloads { get; set; }
         public double DownloadSpeed { get; set; }
     }
@@ -49,6 +49,9 @@ namespace asciitestingNS
             if (numofParallelDownloads <=0 )
             {
                 numofParallelDownloads = Environment.ProcessorCount;
+
+                //test of setting num'odownloads to -1
+                //numofParallelDownloads = 1;
             }
 
 
@@ -83,47 +86,68 @@ namespace asciitestingNS
                         End = responseLength - 1
                     });
 
-
-                    //create and start stopwatch
-                    var watch = new Stopwatch();
-                    watch.Start();
-
                     int index = 0;
+                    long threadElapsedTicks = 0;
                     Parallel.ForEach(readRanges, new ParallelOptions() { MaxDegreeOfParallelism = numofParallelDownloads }, readRanges =>
                      {
+                         //make this run as fast as possible
+                         var threadPrio = Thread.CurrentThread.Priority;
+                         Thread.CurrentThread.Priority = ThreadPriority.Highest;
+
                          HttpWebRequest httpWebRequest = HttpWebRequest.Create(fileUrl) as HttpWebRequest;
                          httpWebRequest.Method = "GET";
                          httpWebRequest.AddRange(readRanges.Start, readRanges.End);
                          using (HttpWebResponse httpWebResponse = httpWebRequest.GetResponse() as HttpWebResponse)
                          {
-                             string tempFilePath = Path.GetTempFileName();
-                             using (var fileStream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write, FileShare.Write))
-                             {
-                                 httpWebResponse.GetResponseStream().CopyTo(fileStream);
-                                 tempFilesDictionary.TryAdd((int)index, tempFilePath);
+                             long contentLength = httpWebResponse.ContentLength;
+                             byte[] responseBytes = new byte[contentLength];
+
+                             Stream streamReader = httpWebResponse.GetResponseStream();
+                             BinaryReader binReader = new BinaryReader(streamReader);
+                             MemoryStream ms = new MemoryStream();
+                             int count;
+                             Stopwatch watch = new Stopwatch();
+
+                             watch.Start();
+                             while ((count = binReader.Read(responseBytes, 0, responseBytes.Length)) != 0)
+                             { 
+                                 //This loop runs until all bytes sent by server have been read
+                                 //We don't do anything w/ the data as we're just interested
+                                 //in download speed, not processing
+
+                                 //code below for debug
+
+                                 //ms.Write(responseBytes, 0, count);
+                                //Console.WriteLine(@"After: responseBytes = {0}, totalRead = {1} ", responseBytes.Length, count);
                              }
+                             watch.Stop();
+                             
+
+                             //because types for Interlocked.Add and the Stopwatch don't match well, we'll capture last
+                             //finishing threads ticks and pass that out
+                             long elapsedTicks = watch.ElapsedTicks;
+                             Interlocked.Exchange(ref threadElapsedTicks, elapsedTicks);
+                             
+                             //debug
+                             Console.WriteLine("elapsedTicks for Thread {0} was {1}", Thread.CurrentThread.ManagedThreadId, elapsedTicks);
+                             
+                             watch.Reset();
+                             Thread.CurrentThread.Priority = threadPrio;
                          }
                          index++;
+                         
                      });
-
+                    
                     result.ParallelDownloads = index;
 
-                    watch.Stop();
+                    //calculate elapsed time from elapsed ticks in seconds
+                    long stopwatchFrequency = Stopwatch.Frequency;
+                    result.TimeTaken = (double)threadElapsedTicks / stopwatchFrequency;
 
-                    result.TimeTaken = watch.Elapsed;
-
+                    //debug
+                    Console.WriteLine("threadElapsedTicks for was = {0}", threadElapsedTicks);
                     //in Mbps
-                    result.DownloadSpeed = (result.Size * 8 / 1000000) / result.TimeTaken.TotalSeconds;
-
-                    #region Merge to single file
-                    foreach (var tempFile in tempFilesDictionary.OrderBy(b => b.Key))
-                    {
-                        byte[] tempFileBytes = File.ReadAllBytes(tempFile.Value);
-                        destinationStream.Write(tempFileBytes, 0, tempFileBytes.Length);
-                        File.Delete(tempFile.Value);
-                    }
-                    # endregion
-
+                    result.DownloadSpeed = (result.Size * 8 / 1000000) / result.TimeTaken;
                     return result;
                 }
             }

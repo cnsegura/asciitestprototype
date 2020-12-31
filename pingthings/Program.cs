@@ -60,13 +60,15 @@ namespace asciitestingNS
         {
             //suggested download files:
             //https://fivegdownloads.blob.core.windows.net/downloadfiles/downloadtest.zip
+            //https://fivegdownloads.blob.core.windows.net/downloadfiles/bigJsonFile.json
             //http://speedtest-ca.turnkeyinternet.net/100mb.bin
 
             var dlSpeedtest = DownloadSpeedTest.Download(opts.DownloadUrl, opts.SaveLocation);
             if (dlSpeedtest != null)
             {
                 Console.WriteLine($"Download Size: {dlSpeedtest.Size} bytes");
-                Console.WriteLine($"Time taken: {dlSpeedtest.TimeTaken.TotalSeconds} s");
+                //Console.WriteLine($"Time taken: {dlSpeedtest.TimeTaken.TotalSeconds} s");
+                Console.WriteLine($"Time taken: {dlSpeedtest.TimeTaken,6:f} s");
                 Console.WriteLine($"Download speed: {dlSpeedtest.DownloadSpeed,6:f} Mbps");
                 Console.WriteLine($"Parallel processes: {dlSpeedtest.ParallelDownloads}");
                 return 1;

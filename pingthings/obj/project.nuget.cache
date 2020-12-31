@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dD1dBIWSLxnzuqEvRAlp9MQmp5h8aJqyE2KL03rzcaIIdrMHTB4LlQLm1mDpgg2jLdOEb2kra2RJwZG/pgkt1w==",
+  "dgSpecHash": "AjPMcbHsODeuwfRBNGr0MSSk8NZFE8Ya211gb7GzdOAqNU7X/kZx/jFRuzBs6Cf/s2/phIuBWODkPVxuOBJWBQ==",
   "success": true,
-  "projectFilePath": "c:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj",
+  "projectFilePath": "C:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chrisseg\\.nuget\\packages\\commandlineparser\\2.8.0\\commandlineparser.2.8.0.nupkg.sha512"
   ],
