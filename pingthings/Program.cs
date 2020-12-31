@@ -67,7 +67,6 @@ namespace asciitestingNS
             if (dlSpeedtest != null)
             {
                 Console.WriteLine($"Download Size: {dlSpeedtest.Size} bytes");
-                //Console.WriteLine($"Time taken: {dlSpeedtest.TimeTaken.TotalSeconds} s");
                 Console.WriteLine($"Time taken: {dlSpeedtest.TimeTaken,6:f} s");
                 Console.WriteLine($"Download speed: {dlSpeedtest.DownloadSpeed,6:f} Mbps");
                 Console.WriteLine($"Parallel processes: {dlSpeedtest.ParallelDownloads}");
