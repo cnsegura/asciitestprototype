@@ -28,7 +28,21 @@ namespace wopr
             }
 
         }
+        
+        [TestMethod]
+        public void Download_Speed_Test()
+        {
+            string dlUrl = @"https://fivegdownloads.blob.core.windows.net/downloadfiles/downloadtest.zip\";
+            var dlSpeedtest = DownloadSpeedTest.Download(dlUrl, ".");
+            Assert.IsNotNull(dlSpeedtest, "download failed");
 
+            if (dlSpeedtest != null)
+            {
+                this.LogTest.Info($"Download Size: {dlSpeedtest.Size} bytes");
+                this.LogTest.Info($"Time taken: {dlSpeedtest.TimeTaken,6:f} s");
+                this.LogTest.Info($"Download speed: {dlSpeedtest.DownloadSpeed,6:f} Mbps");
+            }
+        }
         //[TestMethod]
         //public void Ping_Bad_Address()
         //{

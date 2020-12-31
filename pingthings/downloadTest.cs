@@ -101,11 +101,11 @@ namespace asciitestingNS
                          {
                              long contentLength = httpWebResponse.ContentLength;
                              byte[] responseBytes = new byte[contentLength];
+                             int count;
 
                              Stream streamReader = httpWebResponse.GetResponseStream();
                              BinaryReader binReader = new BinaryReader(streamReader);
                              MemoryStream ms = new MemoryStream();
-                             int count;
                              Stopwatch watch = new Stopwatch();
 
                              watch.Start();
@@ -129,7 +129,7 @@ namespace asciitestingNS
                              Interlocked.Exchange(ref threadElapsedTicks, elapsedTicks);
                              
                              //debug
-                             Console.WriteLine("elapsedTicks for Thread {0} was {1}", Thread.CurrentThread.ManagedThreadId, elapsedTicks);
+                             Console.WriteLine("elapsedTicks for Thread {0} was {1}, readRange.Start was = {2}, readRange.End was = {3}", Thread.CurrentThread.ManagedThreadId, elapsedTicks, readRanges.Start, readRanges.End);
                              
                              watch.Reset();
                              Thread.CurrentThread.Priority = threadPrio;
