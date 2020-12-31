@@ -32,7 +32,7 @@ namespace wopr
         [TestMethod]
         public void Download_Speed_Test()
         {
-            string dlUrl = @"https://fivegdownloads.blob.core.windows.net/downloadfiles/downloadtest.zip\";
+            string dlUrl = @"https://fivegdownloads.blob.core.windows.net/downloadfiles/downloadtest.zip";
             var dlSpeedtest = DownloadSpeedTest.Download(dlUrl, ".");
             Assert.IsNotNull(dlSpeedtest, "download failed");
 
