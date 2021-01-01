@@ -59,6 +59,7 @@ namespace wopr.common
             throw e;
         }
         #endregion
+
         #region Before/After test setup
         [TestInitialize]
         public void BeforeTest()
@@ -76,13 +77,6 @@ namespace wopr.common
             //NLog.LogManager.Shutdown();
         }
         #endregion
-
-        //test if class clean up will fix the problem
-        [ClassCleanup]
-        public void AfterAllTests()
-        {
-            File.Delete(@"./logfile.txt");
-        }
     }
 
 }

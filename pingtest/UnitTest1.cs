@@ -3,13 +3,25 @@ using System;
 using System.IO;
 using asciitestingNS;
 using wopr.common;
+using System.Runtime.CompilerServices;
 
 namespace wopr
 {
     [TestClass]
     public class SystemCheckTests : TestCommon
     {
-        
+        //ClassInitalize and ClassCleanup cannot be inherited from TestCommon
+        [ClassInitialize]
+        public static void Before_Test_ClassRun(TestContext context)
+        {
+            File.Delete(@"./logfile.txt");
+        }
+        [ClassCleanup]
+        public static void After_Tests_Run()
+        {
+            File.Delete(@"./logfile.txt");
+        }
+
         [TestMethod]
         public void Ping_Known_Good_Address()
         {
