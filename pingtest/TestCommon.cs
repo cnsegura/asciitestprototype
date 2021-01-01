@@ -64,7 +64,7 @@ namespace wopr.common
         public void BeforeTest()
         {
             //remove any previous logfiles
-            //File.Delete(@"./logfile.txt");
+            File.Delete(@"./logfile.txt");
             this.LogTestStarting(TestContext.TestName);
         }
 
