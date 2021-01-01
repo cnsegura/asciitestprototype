@@ -64,7 +64,7 @@ namespace wopr.common
         public void BeforeTest()
         {
             //remove any previous logfiles
-            File.Delete(@"./logfile.txt");
+            //File.Delete(@"./logfile.txt");
             this.LogTestStarting(TestContext.TestName);
         }
 
@@ -76,6 +76,13 @@ namespace wopr.common
             //NLog.LogManager.Shutdown();
         }
         #endregion
+
+        //test if class clean up will fix the problem
+        [ClassCleanup]
+        public void AfterAllTests()
+        {
+            File.Delete(@"./logfile.txt");
+        }
     }
 
 }
