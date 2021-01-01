@@ -19,7 +19,7 @@ namespace wopr
         [ClassCleanup]
         public static void After_Tests_Run()
         {
-            File.Delete(@"./logfile.txt");
+            //File.Delete(@"./logfile.txt");
         }
 
         [TestMethod]
