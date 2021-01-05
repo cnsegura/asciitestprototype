@@ -44,7 +44,7 @@ namespace wopr
         [TestMethod]
         public void Download_Speed_Test()
         {
-            string dlUrl = @"http://asciiserver.westus2.cloudapp.azure.com:8080/downloadfiles/bigJsonFile.json";
+            string dlUrl = @"http://asciiserver.westus2.cloudapp.azure.com:8080/downloads/bigJsonFile.json";
             var dlSpeedtest = DownloadSpeedTest.Download(dlUrl, ".");
             Assert.IsNotNull(dlSpeedtest, "download failed");
 
