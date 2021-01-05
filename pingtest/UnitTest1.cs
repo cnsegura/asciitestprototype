@@ -44,7 +44,7 @@ namespace wopr
         [TestMethod]
         public void Download_Speed_Test()
         {
-            string dlUrl = @"https://fivegdownloads.blob.core.windows.net/downloadfiles/downloadtest.zip";
+            string dlUrl = @"http://asciiserver.westus2.cloudapp.azure.com:8080/downloadfiles/bigJsonFile.json";
             var dlSpeedtest = DownloadSpeedTest.Download(dlUrl, ".");
             Assert.IsNotNull(dlSpeedtest, "download failed");
 
@@ -55,19 +55,5 @@ namespace wopr
                 this.LogTest.Info($"Download speed: {dlSpeedtest.DownloadSpeed,6:f} Mbps");
             }
         }
-        //[TestMethod]
-        //public void Ping_Bad_Address()
-        //{
-        //    string host = "dns.google.com";
-        //    int port = 80;
-        //    bool expectedResult = true;
-        //    bool returnedResult;
-
-        //    PingSpectrumFiveG sp = new PingSpectrumFiveG();
-        //    returnedResult = sp.PingServer(host, port);
-
-        //    //should throw exception... 
-        //    Assert.IsTrue(returnedResult == expectedResult, "ping wrong address");
-        //}
     }
 }
