@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.IO;
@@ -35,12 +36,15 @@ namespace asciitestingNS
             ServicePointManager.DefaultConnectionLimit = 100;
             ServicePointManager.MaxServicePointIdleTime = 1000;
         }
+        
+        //TESTING TIMER COLLECTION
+        static BlockingCollection<string> String1 = new BlockingCollection<string>(new ConcurrentBag<string>());
+        static ConcurrentDictionary<int, long> timerKeyValue = new ConcurrentDictionary<int, long>();
 
         public static DownloadResult Download(string fileUrl, string destinationFolder, int numofParallelDownloads = 0)
         {
             Uri uri = new Uri(fileUrl);
-
-            //do I even need a destination path?
+            //though we're not storing file, this is used for procesing later
             string destinationFilePath = Path.Combine(destinationFolder, uri.Segments.Last());
 
             DownloadResult result = new DownloadResult() { FilePath = destinationFilePath };
@@ -51,7 +55,7 @@ namespace asciitestingNS
                 numofParallelDownloads = Environment.ProcessorCount;
 
                 //test of setting num'odownloads to -1
-                //numofParallelDownloads = 1;
+                //numofParallelDownloads = 2;
             }
 
 
@@ -87,7 +91,6 @@ namespace asciitestingNS
                     });
 
                     int index = 0;
-                    long threadElapsedTicks = 0;
                     Parallel.ForEach(readRanges, new ParallelOptions() { MaxDegreeOfParallelism = numofParallelDownloads }, readRanges =>
                      {
                          //make this run as fast as possible
@@ -121,34 +124,51 @@ namespace asciitestingNS
                                 //Console.WriteLine(@"After: responseBytes = {0}, totalRead = {1} ", responseBytes.Length, count);
                              }
                              watch.Stop();
-                             
 
-                             //because types for Interlocked.Add and the Stopwatch don't match well, we'll capture last
-                             //finishing threads ticks and pass that out
-                             long elapsedTicks = watch.ElapsedTicks;
-                             Interlocked.Exchange(ref threadElapsedTicks, elapsedTicks);
-                             
-                             //debug
-                             Console.WriteLine("elapsedTicks for Thread {0} was {1}, readRange.Start was = {2}, readRange.End was = {3}", Thread.CurrentThread.ManagedThreadId, elapsedTicks, readRanges.Start, readRanges.End);
-                             
+
+                             //DEBUG
+                             //long elapsedTicks = watch.ElapsedTicks;
+                             //string string1 = ("elapsedTicks for Thread: " + Thread.CurrentThread.ManagedThreadId + " was = " + elapsedTicks + " readRange.Start was = " + readRanges.Start + " readRange.End was = " + readRanges.End);
+                             //String1.Add(string1);
+
+                             timerKeyValue.TryAdd(Thread.CurrentThread.ManagedThreadId, watch.ElapsedTicks);
+
                              watch.Reset();
                              Thread.CurrentThread.Priority = threadPrio;
                          }
                          index++;
                          
                      });
+
+
+                    //fix ordering
+                    long threadElapsedTicks=0;
+                    int lastThread=0;
+                    foreach (KeyValuePair<int, long> orderedKeyValue in timerKeyValue.OrderBy(key => key.Value))
+                    {
+                        //Debug
+                        //Console.WriteLine(" key: {0}, value: {1}", orderedKeyValue.Key, orderedKeyValue.Value);
+                        
+                        //the last one in the set is the one that took the longest
+                        lastThread = orderedKeyValue.Key;
+                        threadElapsedTicks = orderedKeyValue.Value;
+                    }
+
+                    //Debug
+                    //Console.WriteLine("last thread was = {0}, threadElapsedTicks was = {1}", lastThread, threadElapsedTicks);
                     
+                     
                     result.ParallelDownloads = index;
 
                     //calculate elapsed time from elapsed ticks in seconds
                     long stopwatchFrequency = Stopwatch.Frequency;
+                    
+                    
                     result.TimeTaken = (double)threadElapsedTicks / stopwatchFrequency;
 
-                    //debug
-                    Console.WriteLine("threadElapsedTicks for was = {0}", threadElapsedTicks);
                     //in Mbps
                     result.DownloadSpeed = (result.Size * 8 / 1000000) / result.TimeTaken;
-                    return result;
+                          return result;
                 }
             }
             catch (Exception ex)
