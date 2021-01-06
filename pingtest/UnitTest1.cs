@@ -25,8 +25,8 @@ namespace wopr
         [TestMethod]
         public void Ping_Known_Good_Address()
         {
-            string host = "dns.google.com";
-            int port = 53;
+            string host = "52.156.139.164";
+            int port = 8080;
 
             //PingSpectrumFiveG sp = new PingSpectrumFiveG();
             var sp = PingSpectrumFiveG.PingServer(host, port);
