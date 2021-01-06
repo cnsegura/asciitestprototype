@@ -37,10 +37,10 @@ namespace wopr
                 this.LogTest.Info("At port: {0}", port);
 
                 this.LogTest.Info($"Ping result is: {sp.PingSuccess}");
-                this.LogTest.Info($"Average response time is: {sp.AveragePingTimeMs} ms");
-                this.LogTest.Info($"Max response time is: {sp.MaxPingTimeMs} ms");
-                this.LogTest.Info($"Min response time is: {sp.MinPingTimeMs} ms");
-                this.LogTest.Info($"Response standard deviation (p) is {sp.PingStandardDeviationS}");
+                this.LogTest.Info($"Average response time is: {sp.AveragePingTimeMs,6:f} ms");
+                this.LogTest.Info($"Max response time is: {sp.MaxPingTimeMs,6:f} ms");
+                this.LogTest.Info($"Min response time is: {sp.MinPingTimeMs,6:f} ms");
+                this.LogTest.Info($"Response standard deviation (sample) is {sp.PingStandardDeviationS,6:f}");
             }
 
         }
