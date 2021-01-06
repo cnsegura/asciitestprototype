@@ -99,3 +99,4 @@ c:\SPaCE\testAutomation\pingthings\pingtest\obj\Debug\netcoreapp3.1\pingtest.dll
 c:\SPaCE\testAutomation\pingthings\pingtest\obj\Debug\netcoreapp3.1\pingtest.pdb
 c:\SPaCE\testAutomation\pingthings\pingtest\obj\Debug\netcoreapp3.1\pingtest.genruntimeconfig.cache
 c:\SPaCE\testAutomation\pingthings\pingtest\bin\Debug\netcoreapp3.1\NLog.config
+C:\SPaCE\testAutomation\pingthings\pingtest\bin\Debug\netcoreapp3.1\MathNet.Numerics.dll

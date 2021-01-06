@@ -42,17 +42,20 @@ namespace asciitestingNS
         
         static int RunScanTest(ScanOptions opts)
         {
-            PingSpectrumFiveG ping5g = new PingSpectrumFiveG();
 
-            bool pingResult = ping5g.PingServer(opts.Server, opts.Port);
-            if(pingResult) 
+            var pingResult = PingSpectrumFiveG.PingServer(opts.Server, opts.Port);
+            if(pingResult != null) 
             {
-                Console.WriteLine($"Ping result is: {pingResult}");
+                Console.WriteLine($"Ping result is: {pingResult.PingSuccess}");
+                Console.WriteLine($"Average response time is: {pingResult.AveragePingTimeMs} ms");
+                Console.WriteLine($"Max response time is: {pingResult.MaxPingTimeMs} ms");
+                Console.WriteLine($"Min response time is: {pingResult.MinPingTimeMs} ms");
+                Console.WriteLine($"Response standard deviation (p) is {pingResult.PingStandardDeviationS}");
                 return 1; 
             } //fix 
             else 
             {
-                Console.WriteLine($"Ping result is: {pingResult}");
+                Console.WriteLine($"Ping result is: {false}");
                 return 0;  
             }
         }

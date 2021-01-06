@@ -19,7 +19,7 @@ namespace wopr
         [ClassCleanup]
         public static void After_Tests_Run()
         {
-            //File.Delete(@"./logfile.txt");
+         
         }
 
         [TestMethod]
@@ -27,16 +27,20 @@ namespace wopr
         {
             string host = "dns.google.com";
             int port = 53;
-            bool expectedResult = true;
-            bool returnedResult;
 
-            PingSpectrumFiveG sp = new PingSpectrumFiveG();
-            returnedResult = sp.PingServer(host, port);
-            Assert.IsTrue(returnedResult == expectedResult, "ping failed");
-            if( returnedResult == true)
+            //PingSpectrumFiveG sp = new PingSpectrumFiveG();
+            var sp = PingSpectrumFiveG.PingServer(host, port);
+            Assert.IsNotNull(sp, "ping failed");
+            if( sp != null)
             {
                 this.LogTest.Info("Successfully ping'd host: {0}", host);
                 this.LogTest.Info("At port: {0}", port);
+
+                this.LogTest.Info($"Ping result is: {sp.PingSuccess}");
+                this.LogTest.Info($"Average response time is: {sp.AveragePingTimeMs} ms");
+                this.LogTest.Info($"Max response time is: {sp.MaxPingTimeMs} ms");
+                this.LogTest.Info($"Min response time is: {sp.MinPingTimeMs} ms");
+                this.LogTest.Info($"Response standard deviation (p) is {sp.PingStandardDeviationS}");
             }
 
         }

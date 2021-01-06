@@ -10,6 +10,15 @@
         "runtime": {
           "lib/netstandard2.0/CommandLine.dll": {}
         }
+      },
+      "MathNet.Numerics/4.14.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/MathNet.Numerics.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MathNet.Numerics.dll": {}
+        }
       }
     }
   },
@@ -35,11 +44,32 @@
         "lib/netstandard2.0/CommandLine.dll",
         "lib/netstandard2.0/CommandLine.xml"
       ]
+    },
+    "MathNet.Numerics/4.14.0": {
+      "sha512": "R+g4S7L+gJ4WFZQUOOC0QLYdcCtxJBEzHD76VRAlH7upvlD/S1wqrXvHliVy+3h85ZjUSyWSETBXiAnuo70qxw==",
+      "type": "package",
+      "path": "mathnet.numerics/4.14.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net40/MathNet.Numerics.dll",
+        "lib/net40/MathNet.Numerics.xml",
+        "lib/net461/MathNet.Numerics.dll",
+        "lib/net461/MathNet.Numerics.xml",
+        "lib/netstandard1.3/MathNet.Numerics.dll",
+        "lib/netstandard1.3/MathNet.Numerics.xml",
+        "lib/netstandard2.0/MathNet.Numerics.dll",
+        "lib/netstandard2.0/MathNet.Numerics.xml",
+        "mathnet.numerics.4.14.0.nupkg.sha512",
+        "mathnet.numerics.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "CommandLineParser >= 2.8.0"
+      "CommandLineParser >= 2.8.0",
+      "MathNet.Numerics >= 4.14.0"
     ]
   },
   "packageFolders": {
@@ -48,11 +78,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj",
+      "projectUniqueName": "C:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj",
       "projectName": "ag5g",
-      "projectPath": "c:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj",
+      "projectPath": "C:\\SPaCE\\testAutomation\\pingthings\\pingthings\\pingthings.csproj",
       "packagesPath": "C:\\Users\\chrisseg\\.nuget\\packages\\",
-      "outputPath": "c:\\SPaCE\\testAutomation\\pingthings\\pingthings\\obj\\",
+      "outputPath": "C:\\SPaCE\\testAutomation\\pingthings\\pingthings\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\chrisseg\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -84,6 +114,10 @@
           "CommandLineParser": {
             "target": "Package",
             "version": "[2.8.0, )"
+          },
+          "MathNet.Numerics": {
+            "target": "Package",
+            "version": "[4.14.0, )"
           }
         },
         "imports": [

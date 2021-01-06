@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "gN4c1vDP8TTZiBYvA6cIZsUnPYoLQPOgfjeNe7itSCkkd5BQca+4vkCS9WIju2iCPBQhdsiVnnK2poKANydaUw==",
+  "dgSpecHash": "a4LefpuHY9UqJCeV/JtAPApFAWCuwBFNtVtUMuTgkjAUOXZMTBUbNoFcExIkSRhSwHl0p6xVBytRsnbxYfzuyg==",
   "success": true,
   "projectFilePath": "C:\\SPaCE\\testAutomation\\pingthings\\pingtest\\pingtest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chrisseg\\.nuget\\packages\\commandlineparser\\2.8.0\\commandlineparser.2.8.0.nupkg.sha512",
     "C:\\Users\\chrisseg\\.nuget\\packages\\coverlet.collector\\1.3.0\\coverlet.collector.1.3.0.nupkg.sha512",
+    "C:\\Users\\chrisseg\\.nuget\\packages\\mathnet.numerics\\4.14.0\\mathnet.numerics.4.14.0.nupkg.sha512",
     "C:\\Users\\chrisseg\\.nuget\\packages\\microsoft.codecoverage\\16.7.1\\microsoft.codecoverage.16.7.1.nupkg.sha512",
     "C:\\Users\\chrisseg\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\chrisseg\\.nuget\\packages\\microsoft.net.test.sdk\\16.7.1\\microsoft.net.test.sdk.16.7.1.nupkg.sha512",

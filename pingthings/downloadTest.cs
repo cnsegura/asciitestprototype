@@ -38,7 +38,8 @@ namespace asciitestingNS
         }
         
         //TESTING TIMER COLLECTION
-        static BlockingCollection<string> String1 = new BlockingCollection<string>(new ConcurrentBag<string>());
+        //static BlockingCollection<string> String1 = new BlockingCollection<string>(new ConcurrentBag<string>());
+        
         static ConcurrentDictionary<int, long> timerKeyValue = new ConcurrentDictionary<int, long>();
 
         public static DownloadResult Download(string fileUrl, string destinationFolder, int numofParallelDownloads = 0)
