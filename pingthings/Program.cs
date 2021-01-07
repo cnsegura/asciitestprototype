@@ -8,7 +8,7 @@ using System.Text;
 
 namespace asciitestingNS
 {
-    [Verb("scan", HelpText = "Check Internet connectivity by pinging a server with known available port.")]
+    [Verb("scan", HelpText = "Check Internet connectivity by pinging  a server with known available port.")]
     class ScanOptions
     {
         [Option('s', "server", Required = true, HelpText = "Server URL to scan.")]
