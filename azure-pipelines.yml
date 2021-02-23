@@ -33,16 +33,3 @@ steps:
   inputs:
     command: 'test'
 
-- task: DotNetCoreCLI@2
-  displayName: ' DotNet Publish $(buildConfiguration)'
-  inputs:
-    command: publish
-    publishWebProjects: false
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish $(buildConfiguration) Artifact to ADO Artifacts'
-  inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: 'ag5g console release'
